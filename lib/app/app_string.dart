@@ -1,0 +1,53 @@
+class AppStrings {
+  static const String signin = 'Log In';
+  static const String signout = 'Log Out';
+  static const String signup = 'Sign Up';
+  static const String or = 'Or';
+  static const String welcomeText = 'Complete access to all school projects!';
+  static const String appName = 'hivek';
+  static const String broughtToYou = 'Brought to you by';
+  static const String comSicMx = 'Computer Science, F.U.T, Minna';
+  static const String continueWithGoogle = 'Continue with Facebook';
+  static const String continueWithEmail = 'Continue with Email';
+  static const String continueWithApple = 'Continue with Apple';
+  static const String welcomeToHivek = 'Welcome To \nHivek 🎉';
+  static const String createAccount = 'Create an account now!';
+  static const String continueText = 'Continue';
+  static const String email = 'Enter your email address';
+  static const String enterOTP = 'Enter OTP';
+  static const String enterOTPText = 'Sent to ab***@gmail.com';
+  static const String oneTimePassword = 'One time password';
+  static const String verifyEmail = 'Verify Email';
+  static const String emailVerifyText = 'By signung up, you agree to Hivek’s';
+  static const String tellUsMoreText = 'Tell us more \nabout you';
+  static const String and = 'and';
+  static const String termsOfService = 'Terms of\nService';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String whatDoYouDo = 'What do you do?';
+  static const String whatSchool = 'What school do you attend?';
+  static const String whatSchool2 = 'What school \ndo you attend?';
+  static const String student = 'Student';
+  static const String lecturer = 'Lecturer';
+  static const String researcher = 'Researcher';
+  static const String searchForInstitutions = 'Search for institutions';
+  static const String thisApp =
+      'This app was done by the above students in Computer Science F.U.T, Minna as a final year project.';
+  static const String acknowledgement = 'Acknowledgement';
+  static const String abdull = 'Abdull';
+  static const String guma = 'Guma';
+  static const String great = 'Great';
+  static const String joe = 'Joe';
+  static const String supervisedBy = 'Supervised by';
+  static const String eFAminu = 'E.F. Aminu';
+
+  static const String level = 'Level';
+  static const String welcomeToOrganize = 'Welcome to Organize';
+  static const String getStarted = 'Get started';
+  static const String selectDepartment = 'Select Department';
+  static const String selectFaculty = 'Select Faculty';
+  static const String selectLevel = 'Select Level';
+  static const String firstNameText = 'Jane';
+  static const String lastNameText = 'Doe';
+  static const String matricNoText = '2016/1/*****CT';
+  static const String passwordText = '*******************';
+}
