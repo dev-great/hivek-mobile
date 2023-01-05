@@ -121,21 +121,30 @@ class _TellMoreState extends State<TellMore> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Row(children: [
-                  Text(
-                    school != null ? school.toString() : AppStrings.whatSchool,
-                    style: bodyTextStyle.copyWith(
-                        fontSize: 15,
-                        color: school != null
-                            ? AppColor.blackColor
-                            : AppColor.textColor.withOpacity(0.3)),
+                  Expanded(
+                    child: Text(
+                      school != null
+                          ? school.toString()
+                          : AppStrings.whatSchool,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
+                      softWrap: false,
+                      style: bodyTextStyle.copyWith(
+                          fontSize: 15,
+                          color: school != null
+                              ? AppColor.blackColor
+                              : AppColor.textColor.withOpacity(0.3)),
+                    ),
                   ),
-                  const Spacer(),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    size: 30,
-                    color: school != null
-                        ? AppColor.blackColor
-                        : AppColor.textColor.withOpacity(0.3),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Icon(
+                      Icons.arrow_drop_down,
+                      size: 30,
+                      color: school != null
+                          ? AppColor.blackColor
+                          : AppColor.textColor.withOpacity(0.3),
+                    ),
                   )
                 ]),
               ),
@@ -148,7 +157,13 @@ class _TellMoreState extends State<TellMore> {
             title: AppStrings.continueText,
             onPress: () {
               school != null && whatYouDo != null
-                  ? Navigator.pushNamed(context, Acknowledgement.route)
+                  ? Navigator.pushNamed(
+                      context,
+                      Acknowledgement.route,
+                      arguments: {
+                        'isSettings': false,
+                      },
+                    )
                   : () {};
             },
             color: school != null && whatYouDo != null
@@ -190,6 +205,12 @@ class _TellMoreState extends State<TellMore> {
         items.addAll(schoolModel);
       });
     }
+  }
+
+  void _selectedSchool(value) {
+    setState(() {
+      school = value.toString();
+    });
   }
 
   void _searchSchoolModalBottomSheet(context) {
@@ -290,7 +311,7 @@ class _TellMoreState extends State<TellMore> {
                                   child: InkWell(
                                     onTap: () {
                                       setState(() {
-                                        school = items[index];
+                                        _selectedSchool(items[index]);
                                       });
                                       Navigator.pop(context);
                                     },

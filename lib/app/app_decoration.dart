@@ -10,7 +10,7 @@ const bodyTextStyle = TextStyle(
 
 const headerTextStyle = TextStyle(
   fontFamily: 'Poppins',
-  fontSize: 12,
+  fontSize: 40,
   fontWeight: FontWeight.w500,
 );
 

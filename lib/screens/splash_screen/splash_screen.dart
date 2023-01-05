@@ -45,18 +45,14 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  AppStrings.appName,
-                  style: headerTextStyle.copyWith(
-                      fontSize: 45,
-                      color: AppColor.blackColor,
-                      fontWeight: FontWeight.bold),
+                Image.asset(
+                  AppImages.logoBlack,
                 ),
               ],
             ),
             Spacer(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
