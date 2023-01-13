@@ -355,7 +355,7 @@ class _TellMoreState extends State<TellMore> {
           return StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
             return SizedBox(
-              height: 340,
+              height: MediaQuery.of(context).size.height / 2.5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -377,6 +377,7 @@ class _TellMoreState extends State<TellMore> {
                     ),
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       RadioListTile(
                         title: Text(
@@ -455,7 +456,7 @@ class _TellMoreState extends State<TellMore> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                 ],
               ),
