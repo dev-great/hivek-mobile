@@ -231,45 +231,51 @@ class _SearchScreenState extends State<SearchScreen> {
                     const SizedBox(
                       height: 15,
                     ),
-                    Text.rich(
-                      textAlign: TextAlign.center,
-                      TextSpan(children: [
-                        TextSpan(
-                          text: AppStrings.emailVerifyText,
-                          style: bodyTextStyle.copyWith(
-                              color: AppColor.textColor.withOpacity(0.5),
-                              fontSize: 15,
-                              decoration: TextDecoration.none,
-                              fontWeight: FontWeight.normal),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text.rich(
+                          textAlign: TextAlign.center,
+                          TextSpan(children: [
+                            TextSpan(
+                              text: AppStrings.emailVerifyText,
+                              style: bodyTextStyle.copyWith(
+                                  color: AppColor.textColor.withOpacity(0.5),
+                                  fontSize: 15,
+                                  decoration: TextDecoration.none,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            const TextSpan(text: " "),
+                            TextSpan(
+                              text: AppStrings.termsOfService,
+                              style: bodyTextStyle.copyWith(
+                                  color: AppColor.textColor.withOpacity(0.5),
+                                  fontSize: 15,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            const TextSpan(text: " "),
+                            TextSpan(
+                              text: AppStrings.and,
+                              style: bodyTextStyle.copyWith(
+                                  color: AppColor.textColor.withOpacity(0.5),
+                                  fontSize: 15,
+                                  decoration: TextDecoration.none,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            const TextSpan(text: " "),
+                            TextSpan(
+                              text: AppStrings.privacyPolicy,
+                              style: bodyTextStyle.copyWith(
+                                  color: AppColor.textColor.withOpacity(0.5),
+                                  fontSize: 15,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ]),
                         ),
-                        const TextSpan(text: " "),
-                        TextSpan(
-                          text: AppStrings.termsOfService,
-                          style: bodyTextStyle.copyWith(
-                              color: AppColor.textColor.withOpacity(0.5),
-                              fontSize: 15,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        const TextSpan(text: " "),
-                        TextSpan(
-                          text: AppStrings.and,
-                          style: bodyTextStyle.copyWith(
-                              color: AppColor.textColor.withOpacity(0.5),
-                              fontSize: 15,
-                              decoration: TextDecoration.none,
-                              fontWeight: FontWeight.normal),
-                        ),
-                        const TextSpan(text: " "),
-                        TextSpan(
-                          text: AppStrings.privacyPolicy,
-                          style: bodyTextStyle.copyWith(
-                              color: AppColor.textColor.withOpacity(0.5),
-                              fontSize: 15,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ]),
+                      ],
                     ),
                     const SizedBox(
                       height: 20,
