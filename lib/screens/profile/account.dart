@@ -38,218 +38,226 @@ class _AccountScreenState extends State<AccountScreen> {
                     left: 20,
                     right: 20,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.name,
-                        style: headerTextStyle.copyWith(
-                          color: AppColor.blackColor,
-                          fontSize: 24,
-                          decoration: TextDecoration.none,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.name,
+                          style: headerTextStyle.copyWith(
+                            color: AppColor.blackColor,
+                            fontSize: 24,
+                            decoration: TextDecoration.none,
+                          ),
                         ),
-                      ),
-                      Text(
-                        AppStrings.matricNo,
-                        style: headerTextStyle.copyWith(
-                          color: AppColor.greyColor,
-                          fontSize: 18,
-                          decoration: TextDecoration.none,
+                        Text(
+                          AppStrings.matricNo,
+                          style: headerTextStyle.copyWith(
+                            color: AppColor.greyColor,
+                            fontSize: 18,
+                            decoration: TextDecoration.none,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 20,
-                        height: 84,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColor.greyColor.withOpacity(0.3),
+                        const SizedBox(
+                          height: 20,
                         ),
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.only(left: 15, right: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.warning_amber,
-                                color: AppColor.blackColor,
-                              ),
-                              Text(
-                                AppStrings.addVerifyNo,
-                                style: bodyTextStyle.copyWith(
+                        Container(
+                          width: MediaQuery.of(context).size.width - 20,
+                          height: 84,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: AppColor.greyColor.withOpacity(0.3),
+                          ),
+                          child: Center(
+                              child: Padding(
+                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.warning_amber,
                                   color: AppColor.blackColor,
-                                  fontSize: 14,
-                                  decoration: TextDecoration.none,
                                 ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, EditProfile.route);
-                                },
-                                child: Container(
-                                  height: 30,
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                      color: AppColor.blackColor,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                    child: Text(
-                                      AppStrings.verify,
-                                      style: bodyTextStyle.copyWith(
-                                        color: AppColor.whiteColor,
-                                        fontSize: 14,
-                                        decoration: TextDecoration.none,
+                                Text(
+                                  AppStrings.addVerifyNo,
+                                  style: bodyTextStyle.copyWith(
+                                    color: AppColor.blackColor,
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, EditProfile.route);
+                                  },
+                                  child: Container(
+                                    height: 30,
+                                    width: 70,
+                                    decoration: BoxDecoration(
+                                        color: AppColor.blackColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        AppStrings.verify,
+                                        style: bodyTextStyle.copyWith(
+                                          color: AppColor.whiteColor,
+                                          fontSize: 14,
+                                          decoration: TextDecoration.none,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width - 20,
-                        height: 84,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColor.greyColor.withOpacity(0.3),
+                                )
+                              ],
+                            ),
+                          )),
                         ),
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.only(left: 15, right: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.warning_amber,
-                                color: AppColor.blackColor,
-                              ),
-                              Text(
-                                AppStrings.updateEmail,
-                                style: bodyTextStyle.copyWith(
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width - 20,
+                          height: 84,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: AppColor.greyColor.withOpacity(0.3),
+                          ),
+                          child: Center(
+                              child: Padding(
+                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(
+                                  Icons.warning_amber,
                                   color: AppColor.blackColor,
-                                  fontSize: 14,
-                                  decoration: TextDecoration.none,
                                 ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, EditProfile.route);
-                                },
-                                child: Container(
-                                  height: 30,
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                      color: AppColor.blackColor,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                    child: Text(
-                                      AppStrings.update,
-                                      style: bodyTextStyle.copyWith(
-                                        color: AppColor.whiteColor,
-                                        fontSize: 14,
-                                        decoration: TextDecoration.none,
+                                Text(
+                                  AppStrings.updateEmail,
+                                  style: bodyTextStyle.copyWith(
+                                    color: AppColor.blackColor,
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, EditProfile.route);
+                                  },
+                                  child: Container(
+                                    height: 30,
+                                    width: 70,
+                                    decoration: BoxDecoration(
+                                        color: AppColor.blackColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        AppStrings.update,
+                                        style: bodyTextStyle.copyWith(
+                                          color: AppColor.whiteColor,
+                                          fontSize: 14,
+                                          decoration: TextDecoration.none,
+                                        ),
                                       ),
                                     ),
                                   ),
+                                )
+                              ],
+                            ),
+                          )),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height / 35,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, EditProfile.route);
+                          },
+                          child: ListTile(
+                              leading: const Icon(
+                                Iconsax.user,
+                                color: AppColor.blackColor,
+                              ),
+                              title: Text(
+                                AppStrings.editProfile,
+                                style: bodyTextStyle.copyWith(
+                                  color: AppColor.blackColor,
                                 ),
-                              )
-                            ],
-                          ),
-                        )),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, EditProfile.route);
-                        },
-                        child: ListTile(
-                            leading: const Icon(
-                              Iconsax.user,
-                              color: AppColor.blackColor,
-                            ),
-                            title: Text(
-                              AppStrings.editProfile,
-                              style: bodyTextStyle.copyWith(
+                              ),
+                              trailing: const Icon(
+                                Iconsax.arrow_right,
+                                color: AppColor.blackColor,
+                              )),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, UploadProject.route);
+                          },
+                          child: ListTile(
+                              leading: const Icon(
+                                Iconsax.document_upload,
                                 color: AppColor.blackColor,
                               ),
-                            ),
-                            trailing: const Icon(
-                              Iconsax.arrow_right,
-                              color: AppColor.blackColor,
-                            )),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, UploadProject.route);
-                        },
-                        child: ListTile(
-                            leading: const Icon(
-                              Iconsax.document_upload,
-                              color: AppColor.blackColor,
-                            ),
-                            title: Text(
-                              AppStrings.projectUpload,
-                              style: bodyTextStyle.copyWith(
+                              title: Text(
+                                AppStrings.projectUpload,
+                                style: bodyTextStyle.copyWith(
+                                  color: AppColor.blackColor,
+                                ),
+                              ),
+                              trailing: const Icon(
+                                Iconsax.arrow_right,
+                                color: AppColor.blackColor,
+                              )),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              Acknowledgement.route,
+                              arguments: {
+                                'isSettings': true,
+                              },
+                            );
+                          },
+                          child: ListTile(
+                              leading: const Icon(
+                                Iconsax.info_circle,
                                 color: AppColor.blackColor,
                               ),
-                            ),
-                            trailing: const Icon(
-                              Iconsax.arrow_right,
-                              color: AppColor.blackColor,
-                            )),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            Acknowledgement.route,
-                            arguments: {
-                              'isSettings': true,
-                            },
-                          );
-                        },
-                        child: ListTile(
-                            leading: const Icon(
-                              Iconsax.info_circle,
-                              color: AppColor.blackColor,
-                            ),
-                            title: Text(
-                              AppStrings.aboutHivek,
-                              style: bodyTextStyle.copyWith(
-                                color: AppColor.blackColor,
+                              title: Text(
+                                AppStrings.aboutHivek,
+                                style: bodyTextStyle.copyWith(
+                                  color: AppColor.blackColor,
+                                ),
                               ),
-                            ),
-                            trailing: const Icon(
-                              Iconsax.arrow_right,
-                              color: AppColor.blackColor,
-                            )),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: ListTile(
-                          leading: const Icon(
-                            Iconsax.logout_1,
-                            color: AppColor.dangerColor,
-                          ),
-                          title: Text(
-                            AppStrings.logOut,
-                            style: bodyTextStyle.copyWith(
+                              trailing: const Icon(
+                                Iconsax.arrow_right,
+                                color: AppColor.blackColor,
+                              )),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: ListTile(
+                            leading: const Icon(
+                              Iconsax.logout_1,
                               color: AppColor.dangerColor,
                             ),
+                            title: Text(
+                              AppStrings.logOut,
+                              style: bodyTextStyle.copyWith(
+                                color: AppColor.dangerColor,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -271,7 +279,7 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height / 10, left: 20),
+                  top: MediaQuery.of(context).size.height / 9, left: 20),
               child: const CircleAvatar(
                 radius: 50,
                 backgroundColor: AppColor.blackColor,
