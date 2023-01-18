@@ -6,6 +6,7 @@ import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_inputtext.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/screens/profile/Screens/project_student.dart';
 
 class EditProfile extends StatefulWidget {
   static const String route = '/edit-profile';
@@ -218,7 +219,7 @@ class _EditProfileState extends State<EditProfile> {
                       child: PrimaryBtn(
                         title: AppStrings.verifyPhone,
                         onPress: () {
-                          Navigator.pop(context);
+                          Navigator.pushNamed(context, ProjectStudent.route);
                         },
                         color: AppColor.blackColor,
                         textColor: AppColor.whiteColor,

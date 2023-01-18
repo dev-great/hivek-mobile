@@ -119,6 +119,7 @@ class _AcknowledgementState extends State<Acknowledgement> {
                               child: CircleAvatar(
                                 radius: 36,
                                 backgroundColor: AppColor.whiteColor,
+                                backgroundImage: AssetImage(AppImages.abdull),
                               ),
                             ),
                             Padding(
@@ -139,9 +140,8 @@ class _AcknowledgementState extends State<Acknowledgement> {
                               radius: 38,
                               backgroundColor: AppColor.blackColor,
                               child: CircleAvatar(
-                                radius: 36,
-                                backgroundColor: AppColor.whiteColor,
-                              ),
+                                  radius: 36,
+                                  backgroundImage: AssetImage(AppImages.great)),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(5.0),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
@@ -27,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 2.2,
+                  height: MediaQuery.of(context).size.height / 1.8,
                   width: MediaQuery.of(context).size.width,
                   child: Center(
                     child: Image.asset(AppImages.noteBook,
@@ -36,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   child: Container(
-                    height: MediaQuery.of(context).size.height / 1.8,
+                    height: MediaQuery.of(context).size.height / 2.3,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                         color: AppColor.whiteColor,
@@ -51,7 +54,7 @@ class WelcomeScreen extends StatelessWidget {
                           child: ConstrainedBox(
                             constraints: BoxConstraints(
                               maxHeight:
-                                  MediaQuery.of(context).size.height / 1.9,
+                                  MediaQuery.of(context).size.height / 2.4,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -86,8 +89,8 @@ class WelcomeScreen extends StatelessWidget {
                                   children: [
                                     Container(
                                       height: 1,
-                                      width:
-                                          MediaQuery.of(context).size.width / 4,
+                                      width: MediaQuery.of(context).size.width /
+                                          3.5,
                                       color: AppColor.greyColor,
                                     ),
                                     Padding(
@@ -102,32 +105,21 @@ class WelcomeScreen extends StatelessWidget {
                                     ),
                                     Container(
                                       height: 1,
-                                      width:
-                                          MediaQuery.of(context).size.width / 4,
+                                      width: MediaQuery.of(context).size.width /
+                                          3.5,
                                       color: AppColor.greyColor,
                                     ),
                                   ],
                                 ),
                                 PrimaryBtn(
                                   title: AppStrings.continueWithGoogle,
-                                  onPress: () {},
-                                  isIcon: true,
-                                  icon: Icons.facebook_rounded,
-                                  color: AppColor.blueColor,
-                                  iconColor: AppColor.whiteColor,
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                PrimaryBtn(
-                                  title: AppStrings.continueWithApple,
                                   onPress: () {
                                     Navigator.pushNamed(
                                         context, BaseScreen.route);
                                   },
                                   isIcon: true,
-                                  icon: Icons.apple,
-                                  color: AppColor.blackColor,
+                                  icon: FontAwesomeIcons.google,
+                                  color: AppColor.blueColor,
                                   iconColor: AppColor.whiteColor,
                                 ),
                               ],

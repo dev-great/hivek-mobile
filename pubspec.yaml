@@ -38,6 +38,11 @@ dependencies:
   flutter_feather_icons: ^2.0.0+1
   iconsax: ^0.0.8
   expandable: ^5.0.1
+  font_awesome_flutter: ^10.3.0
+  provider: ^6.0.5
+  http: ^0.13.5
+  localstorage: ^4.0.0+1
+  async: ^2.9.0
 
 dev_dependencies:
   flutter_test:

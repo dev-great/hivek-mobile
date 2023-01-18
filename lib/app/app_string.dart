@@ -7,7 +7,7 @@ class AppStrings {
   static const String appName = 'hivek';
   static const String broughtToYou = 'Brought to you by';
   static const String comSicMx = 'Computer Science, F.U.T, Minna';
-  static const String continueWithGoogle = 'Continue with Facebook';
+  static const String continueWithGoogle = 'Continue with Google';
   static const String continueWithEmail = 'Continue with Email';
   static const String continueWithApple = 'Continue with Apple';
   static const String welcomeToHivek = 'Welcome To \nHivek 🎉';
@@ -93,6 +93,11 @@ class AppStrings {
   static const String projectBy1 = 'Project By';
   static const String supervisedBy1 = 'Supervised By';
   static const String send = 'Send';
+  static const String applyToBeProjectStudent = 'Apply to be Project Student';
+  static const String applyToBeProjectStudentText =
+      'Select project file to upload, and lets do the rest for you 😇';
+  static const String enterMatricNumber = 'Enter Matric Number';
+  static const String enterNumberHere = 'Enter number here';
 
   //Bookmark Page
   static const String bookmarks = 'Bookmarks';
@@ -107,6 +112,10 @@ class AppStrings {
   //View Projects with Save Material
   static const String saveMaterial = 'Save Material';
   static const String categories = 'Categories';
+  static const String createCategorySave = 'Create Save\nCategory';
+  static const String enterCategoryTitle = 'Enter Category Title';
+  static const String categoryCreateText =
+      "Only you can see this, your privacy is ensured";
   static const String computerScience = 'Computer science';
   static const String documentation = 'Documentation ';
   static const String fIbAnalysis = 'FIb Analysis';
@@ -120,6 +129,7 @@ class AppStrings {
   //Search
   static const String recentSearch = 'Recent Search';
   static const String search = 'Search';
+  static const String searchResult = '122 results found';
   static const String searchFilter = 'Search Filter';
   static const String projectType = 'Project Type';
   static const String all = 'All';
@@ -132,4 +142,6 @@ class AppStrings {
   static const String stopYear = 'Stop Year';
   static const String department = 'Department';
   static const String applyFilter = 'Apply Filter';
+  static const String next = 'Next';
+  static const String previous = 'Previous';
 }

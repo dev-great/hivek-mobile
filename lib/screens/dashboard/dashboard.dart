@@ -6,6 +6,7 @@ import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_image.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/screens/dashboard/read_file.dart';
 
 class DashboardScreen extends StatefulWidget {
   static const String route = '/dashboard';
@@ -217,30 +218,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: List<Widget>.generate(
                       10,
                       (index) {
-                        return GridTile(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                      image: AssetImage(AppImages.bgLight),
-                                      fit: BoxFit.cover,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, ReadFile.route);
+                          },
+                          child: GridTile(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 120,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: const DecorationImage(
+                                        image: AssetImage(AppImages.bgLight),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  AppStrings.projectA,
-                                  style: headerTextStyle.copyWith(
-                                    color: AppColor.blackColor,
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none,
+                                  Text(
+                                    AppStrings.projectA,
+                                    style: headerTextStyle.copyWith(
+                                      color: AppColor.blackColor,
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         );

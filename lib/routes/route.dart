@@ -8,7 +8,9 @@ import 'package:projectx/screens/auth_screen/tell_more.dart';
 import 'package:projectx/screens/base.dart';
 import 'package:projectx/screens/bookmarks/bookmark.dart';
 import 'package:projectx/screens/dashboard/dashboard.dart';
+import 'package:projectx/screens/dashboard/read_file.dart';
 import 'package:projectx/screens/profile/Screens/edit_profile.dart';
+import 'package:projectx/screens/profile/Screens/project_student.dart';
 import 'package:projectx/screens/profile/Screens/smart_upload.dart';
 import 'package:projectx/screens/profile/Screens/upload_project.dart';
 import 'package:projectx/screens/profile/account.dart';
@@ -35,4 +37,6 @@ var customRoutes = <String, WidgetBuilder>{
   EditProfile.route: (context) => const EditProfile(),
   UploadProject.route: (context) => const UploadProject(),
   SmartUpload.route: (context) => const SmartUpload(),
+  ProjectStudent.route: (context) => const ProjectStudent(),
+  ReadFile.route: (context) => const ReadFile(),
 };

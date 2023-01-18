@@ -6,9 +6,11 @@ import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
+import 'package:projectx/app/app_image.dart';
 import 'package:projectx/app/app_inputtext.dart';
 import 'package:projectx/app/app_string.dart';
 import 'package:projectx/screens/auth_screen/acknowledgement.dart';
+import 'package:projectx/screens/dashboard/read_file.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String route = '/search';
@@ -27,6 +29,15 @@ class _SearchScreenState extends State<SearchScreen> {
     'Music',
     'Environmental',
   ];
+  double startYear = 2010, endYear = 2014;
+  void _yearRangeSearch(start, end) {
+    setState(() {
+      startYear = start;
+      endYear = end;
+    });
+  }
+
+  bool searchResult = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +64,16 @@ class _SearchScreenState extends State<SearchScreen> {
                   hintText: AppStrings.search,
                   inputType: TextInputType.none,
                   color: AppColor.textColor,
-                  prefix: Icon(
-                    FeatherIcons.search,
-                    color: AppColor.textColor,
+                  prefix: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        searchResult = !searchResult;
+                      });
+                    },
+                    child: Icon(
+                      FeatherIcons.search,
+                      color: AppColor.textColor,
+                    ),
                   ),
                   suffix: GestureDetector(
                       onTap: () {
@@ -67,61 +85,168 @@ class _SearchScreenState extends State<SearchScreen> {
                   height: 5,
                 ),
                 Text(
-                  AppStrings.recentSearch,
+                  searchResult == true
+                      ? AppStrings.searchResult
+                      : AppStrings.recentSearch,
                   style: headerTextStyle.copyWith(
                       fontSize: 14,
                       color: AppColor.greyColor,
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.normal),
                 ),
-                Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: ListTile(
-                          leading: const Icon(
-                            Icons.history,
-                            color: AppColor.greyColor,
-                          ),
-                          title: Text(
-                            'Pancake milling System',
-                            overflow: TextOverflow.fade,
-                            maxLines: 1,
-                            softWrap: false,
-                            style: bodyTextStyle.copyWith(
-                              fontSize: 15,
-                              color: AppColor.textColor,
+                searchResult == true
+                    ? SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: GridView(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        childAspectRatio: 0.9),
+                                children: List<Widget>.generate(
+                                  10,
+                                  (index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, ReadFile.route);
+                                      },
+                                      child: GridTile(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                height: 120,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  image: const DecorationImage(
+                                                    image: AssetImage(
+                                                        AppImages.bgLight),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                AppStrings.projectA,
+                                                style: headerTextStyle.copyWith(
+                                                  color: AppColor.blackColor,
+                                                  fontSize: 14,
+                                                  decoration:
+                                                      TextDecoration.none,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
-                          ),
-                          trailing: const Icon(
-                            Icons.close,
-                            color: AppColor.greyColor,
-                          )),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: ListTile(
-                          leading: const Icon(
-                            Icons.history,
-                            color: AppColor.greyColor,
-                          ),
-                          title: Text(
-                            'Design and Implementation of . . .',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            softWrap: false,
-                            style: bodyTextStyle.copyWith(
-                              fontSize: 15,
-                              color: AppColor.textColor,
+                            const SizedBox(
+                              height: 20,
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      FeatherIcons.chevronLeft,
+                                      color: AppColor.greyColor,
+                                    ),
+                                    Text(
+                                      AppStrings.previous,
+                                      style: headerTextStyle.copyWith(
+                                        color: AppColor.greyColor,
+                                        fontSize: 14,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      AppStrings.next,
+                                      style: headerTextStyle.copyWith(
+                                        color: AppColor.greyColor,
+                                        fontSize: 14,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    ),
+                                    Icon(
+                                      FeatherIcons.chevronRight,
+                                      color: AppColor.greyColor,
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: ListTile(
+                                leading: const Icon(
+                                  Icons.history,
+                                  color: AppColor.greyColor,
+                                ),
+                                title: Text(
+                                  'Pancake milling System',
+                                  overflow: TextOverflow.fade,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: bodyTextStyle.copyWith(
+                                    fontSize: 15,
+                                    color: AppColor.textColor,
+                                  ),
+                                ),
+                                trailing: const Icon(
+                                  Icons.close,
+                                  color: AppColor.greyColor,
+                                )),
                           ),
-                          trailing: const Icon(
-                            Icons.close,
-                            color: AppColor.greyColor,
-                          )),
-                    ),
-                  ],
-                )
+                          GestureDetector(
+                            onTap: () {},
+                            child: ListTile(
+                                leading: const Icon(
+                                  Icons.history,
+                                  color: AppColor.greyColor,
+                                ),
+                                title: Text(
+                                  'Design and Implementation of . . .',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: bodyTextStyle.copyWith(
+                                    fontSize: 15,
+                                    color: AppColor.textColor,
+                                  ),
+                                ),
+                                trailing: const Icon(
+                                  Icons.close,
+                                  color: AppColor.greyColor,
+                                )),
+                          ),
+                        ],
+                      )
               ],
             ),
           ),
@@ -130,9 +255,12 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
+  final projectTypeList = [];
+
   void _filterlBottomSheet(context) {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(30),
@@ -141,11 +269,11 @@ class _SearchScreenState extends State<SearchScreen> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         builder: (BuildContext bc) {
           return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
+              builder: (BuildContext context, StateSetter state) {
             return Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
               child: SizedBox(
-                height: 540,
+                height: MediaQuery.of(context).size.height / 1.5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,10 +292,10 @@ class _SearchScreenState extends State<SearchScreen> {
                     Text(
                       AppStrings.projectType,
                       style: bodyTextStyle.copyWith(
-                          fontSize: 18,
+                          fontSize: 15,
                           color: AppColor.blackColor,
                           decoration: TextDecoration.none,
-                          fontWeight: FontWeight.normal),
+                          fontWeight: FontWeight.w500),
                     ),
                     Wrap(
                       children: List.generate(
@@ -179,24 +307,33 @@ class _SearchScreenState extends State<SearchScreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      border: Border.all(
-                                        color: AppColor.greyColor1,
-                                      ),
-                                      color: AppColor.greyColor1),
-                                  child: Flexible(
-                                    child: Center(
-                                      child: Flexible(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            categories[index],
-                                            style: bodyTextStyle.copyWith(
-                                              color: AppColor.greyColor,
-                                              fontSize: 12,
-                                              decoration: TextDecoration.none,
+                                GestureDetector(
+                                  onTap: () {
+                                    state(() {
+                                      projectTypeList.add(index);
+                                    });
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        border: Border.all(
+                                          color: projectTypeList.contains(index)
+                                              ? AppColor.blackColor
+                                              : AppColor.greyColor1,
+                                        ),
+                                        color: AppColor.greyColor1),
+                                    child: Flexible(
+                                      child: Center(
+                                        child: Flexible(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              categories[index],
+                                              style: bodyTextStyle.copyWith(
+                                                color: AppColor.greyColor,
+                                                fontSize: 12,
+                                                decoration: TextDecoration.none,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -210,10 +347,109 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                     ),
-                    const MyTextField(
-                      hintText: AppStrings.oneTimePassword1,
-                      inputType: TextInputType.name,
-                      textColor: AppColor.greyColor,
+                    Text(
+                      AppStrings.yearRange,
+                      style: bodyTextStyle.copyWith(
+                          fontSize: 15,
+                          color: AppColor.blackColor,
+                          decoration: TextDecoration.none,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: RangeSlider(
+                          min: 2000,
+                          max: 2023,
+                          divisions: 100, //slide interval
+                          activeColor: AppColor.blackColor,
+                          inactiveColor: AppColor.greyColor,
+                          labels: RangeLabels(
+                              "${startYear.toInt()}", "${endYear.toInt()}"),
+                          values: RangeValues(startYear, endYear),
+                          onChanged: (RangeValues value) {
+                            state(() {
+                              startYear = value.start;
+                              endYear = value.end;
+                            });
+                            // _yearRangeSearch(value.start, value.end);
+                          },
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width / 3,
+                          decoration: BoxDecoration(
+                            color: AppColor.greyColor1,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text.rich(
+                              textAlign: TextAlign.center,
+                              TextSpan(children: [
+                                TextSpan(
+                                  text: "Start:",
+                                  style: bodyTextStyle.copyWith(
+                                      color:
+                                          AppColor.textColor.withOpacity(0.5),
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const TextSpan(text: "  "),
+                                TextSpan(
+                                  text: "${startYear.toInt()}",
+                                  style: bodyTextStyle.copyWith(
+                                      color:
+                                          AppColor.textColor.withOpacity(0.5),
+                                      fontSize: 14,
+                                      decoration: TextDecoration.underline,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width / 3,
+                          decoration: BoxDecoration(
+                            color: AppColor.greyColor1,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text.rich(
+                              textAlign: TextAlign.center,
+                              TextSpan(children: [
+                                TextSpan(
+                                  text: "End:",
+                                  style: bodyTextStyle.copyWith(
+                                      color:
+                                          AppColor.textColor.withOpacity(0.5),
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const TextSpan(text: "  "),
+                                TextSpan(
+                                  text: "${endYear.toInt()} ",
+                                  style: bodyTextStyle.copyWith(
+                                      color:
+                                          AppColor.textColor.withOpacity(0.5),
+                                      fontSize: 14,
+                                      decoration: TextDecoration.underline,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -222,6 +458,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: PrimaryBtn(
                         title: AppStrings.verifyPhone,
                         onPress: () {
+                          projectTypeList.clear();
                           Navigator.pop(context);
                         },
                         color: AppColor.blackColor,

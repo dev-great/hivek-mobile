@@ -10,14 +10,18 @@ class MyTextField extends StatelessWidget {
     this.textColor,
     this.color,
     this.prefix,
+    this.onChangeVal,
     this.suffix,
+    this.onChange,
   }) : super(key: key);
   final String hintText;
   final Widget? prefix;
   final Widget? suffix;
   final Color? color;
   final Color? textColor;
+  final String? onChangeVal;
   final TextInputType inputType;
+  final Function? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,9 @@ class MyTextField extends StatelessWidget {
         style: bodyTextStyle.copyWith(color: AppColor.textColor),
         keyboardType: inputType,
         textInputAction: TextInputAction.next,
+        onChanged: (value) {
+          onChange!(value);
+        },
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(20),
           prefixIcon: prefix,
