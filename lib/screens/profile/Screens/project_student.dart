@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
-import 'package:projectx/app/app_image.dart';
 import 'package:projectx/app/app_inputtext.dart';
 import 'package:projectx/app/app_string.dart';
 
@@ -23,7 +19,7 @@ class _ProjectStudentState extends State<ProjectStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: EdgeInsets.only(
@@ -83,7 +79,7 @@ class _ProjectStudentState extends State<ProjectStudent> {
                 const SizedBox(
                   height: 8,
                 ),
-                MyTextField(
+                const MyTextField(
                   hintText: AppStrings.department,
                   inputType: TextInputType.none,
                   suffix: Icon(FeatherIcons.chevronDown),
@@ -103,7 +99,7 @@ class _ProjectStudentState extends State<ProjectStudent> {
                   hintText: AppStrings.enterNumberHere,
                   inputType: TextInputType.none,
                 ),
-                Spacer(),
+                const Spacer(),
                 PrimaryBtn(
                   title: AppStrings.send,
                   onPress: () {},
