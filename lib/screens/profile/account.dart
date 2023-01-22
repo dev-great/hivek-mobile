@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
@@ -22,7 +20,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(0, 0, 0, 1),
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
       body: Container(
         color: AppColor.blackColor,
         child: Stack(
@@ -39,7 +37,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     right: 20,
                   ),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(),
+                    constraints: const BoxConstraints(),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +74,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.warning_amber,
                                   color: AppColor.blackColor,
                                 ),
@@ -132,7 +130,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.warning_amber,
                                   color: AppColor.blackColor,
                                 ),
