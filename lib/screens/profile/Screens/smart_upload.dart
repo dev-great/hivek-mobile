@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
@@ -64,7 +62,7 @@ class _SmartUploadState extends State<SmartUpload> {
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.w500),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -75,7 +73,7 @@ class _SmartUploadState extends State<SmartUpload> {
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.normal),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(
@@ -83,21 +81,21 @@ class _SmartUploadState extends State<SmartUpload> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage(AppImages.bgLight),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              MyTextField(
+              const MyTextField(
                 hintText: AppStrings.uploadTitle,
                 inputType: TextInputType.none,
                 prefix: Icon(Iconsax.document_upload),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -108,11 +106,11 @@ class _SmartUploadState extends State<SmartUpload> {
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.normal),
               ),
-              MyTextField(
+              const MyTextField(
                 hintText: AppStrings.name,
                 inputType: TextInputType.none,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -123,11 +121,11 @@ class _SmartUploadState extends State<SmartUpload> {
                     decoration: TextDecoration.none,
                     fontWeight: FontWeight.normal),
               ),
-              MyTextField(
+              const MyTextField(
                 hintText: AppStrings.eFAminu,
                 inputType: TextInputType.none,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               PrimaryBtn(
@@ -135,7 +133,7 @@ class _SmartUploadState extends State<SmartUpload> {
                 onPress: () {},
                 color: AppColor.blackColor,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               )
             ],
