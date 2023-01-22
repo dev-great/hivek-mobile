@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
@@ -9,7 +7,6 @@ import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_image.dart';
 import 'package:projectx/app/app_inputtext.dart';
 import 'package:projectx/app/app_string.dart';
-import 'package:projectx/screens/auth_screen/acknowledgement.dart';
 import 'package:projectx/screens/dashboard/read_file.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -30,12 +27,12 @@ class _SearchScreenState extends State<SearchScreen> {
     'Environmental',
   ];
   double startYear = 2010, endYear = 2014;
-  void _yearRangeSearch(start, end) {
-    setState(() {
-      startYear = start;
-      endYear = end;
-    });
-  }
+  // void _yearRangeSearch(start, end) {
+  //   setState(() {
+  //     startYear = start;
+  //     endYear = end;
+  //   });
+  // }
 
   bool searchResult = false;
   @override
@@ -50,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.arrow_back,
                       color: AppColor.textColor,
@@ -70,7 +67,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         searchResult = !searchResult;
                       });
                     },
-                    child: Icon(
+                    child: const Icon(
                       FeatherIcons.search,
                       color: AppColor.textColor,
                     ),
@@ -79,7 +76,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       onTap: () {
                         _filterlBottomSheet(context);
                       },
-                      child: Icon(Iconsax.filter, color: AppColor.textColor)),
+                      child: const Icon(Iconsax.filter,
+                          color: AppColor.textColor)),
                 ),
                 const SizedBox(
                   height: 5,
@@ -105,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             Expanded(
                               child: GridView(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
@@ -161,7 +159,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       FeatherIcons.chevronLeft,
                                       color: AppColor.greyColor,
                                     ),
@@ -185,7 +183,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                         decoration: TextDecoration.none,
                                       ),
                                     ),
-                                    Icon(
+                                    const Icon(
                                       FeatherIcons.chevronRight,
                                       color: AppColor.greyColor,
                                     )

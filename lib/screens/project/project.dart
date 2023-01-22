@@ -1,7 +1,5 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
@@ -82,7 +80,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                           Center(
                             child: Image.asset(AppImages.empty),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           PrimaryBtn(
@@ -112,7 +110,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             expanded: Expanded(
                               child: GridView(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
@@ -135,7 +133,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  image: DecorationImage(
+                                                  image: const DecorationImage(
                                                     image: AssetImage(
                                                         AppImages.bgLight),
                                                     fit: BoxFit.cover,
@@ -179,7 +177,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             expanded: Expanded(
                               child: GridView(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
@@ -202,7 +200,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  image: DecorationImage(
+                                                  image: const DecorationImage(
                                                     image: AssetImage(
                                                         AppImages.bgLight),
                                                     fit: BoxFit.cover,
@@ -246,7 +244,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             expanded: Expanded(
                               child: GridView(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
@@ -269,7 +267,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  image: DecorationImage(
+                                                  image: const DecorationImage(
                                                     image: AssetImage(
                                                         AppImages.bgLight),
                                                     fit: BoxFit.cover,
@@ -314,7 +312,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                               key: GlobalKey(),
                               child: GridView(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 2,
@@ -337,7 +335,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  image: DecorationImage(
+                                                  image: const DecorationImage(
                                                     image: AssetImage(
                                                         AppImages.bgLight),
                                                     fit: BoxFit.cover,
