@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
@@ -28,7 +25,7 @@ class _UploadProjectState extends State<UploadProject> {
               top: MediaQuery.of(context).size.height / 10,
               left: 20,
               right: 20),
-          child: Container(
+          child: SizedBox(
             height: MediaQuery.of(context).size.height - 100,
             width: MediaQuery.of(context).size.width,
             child: Column(
@@ -70,7 +67,7 @@ class _UploadProjectState extends State<UploadProject> {
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.w500),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -81,15 +78,15 @@ class _UploadProjectState extends State<UploadProject> {
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.normal),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                MyTextField(
+                const MyTextField(
                   hintText: AppStrings.selectFiles,
                   inputType: TextInputType.none,
                   prefix: Icon(Iconsax.document_upload),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Text(
@@ -100,14 +97,14 @@ class _UploadProjectState extends State<UploadProject> {
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.normal),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                MyTextField(
+                const MyTextField(
                   hintText: AppStrings.githubLink,
                   inputType: TextInputType.none,
                 ),
-                Spacer(),
+                const Spacer(),
                 PrimaryBtn(
                   title: AppStrings.upload,
                   onPress: () {
@@ -115,7 +112,7 @@ class _UploadProjectState extends State<UploadProject> {
                   },
                   color: AppColor.blackColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 )
               ],
