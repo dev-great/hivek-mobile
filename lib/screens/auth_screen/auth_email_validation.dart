@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
@@ -149,7 +147,7 @@ class _EmailValidationState extends State<EmailValidation> {
                         decoration: TextDecoration.none,
                         fontWeight: FontWeight.normal),
                   ),
-                  TextSpan(text: " "),
+                  const TextSpan(text: " "),
                   TextSpan(
                     text: AppStrings.termsOfService,
                     style: bodyTextStyle.copyWith(
@@ -158,7 +156,7 @@ class _EmailValidationState extends State<EmailValidation> {
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.w500),
                   ),
-                  TextSpan(text: " "),
+                  const TextSpan(text: " "),
                   TextSpan(
                     text: AppStrings.and,
                     style: bodyTextStyle.copyWith(
@@ -167,7 +165,7 @@ class _EmailValidationState extends State<EmailValidation> {
                         decoration: TextDecoration.none,
                         fontWeight: FontWeight.normal),
                   ),
-                  TextSpan(text: " "),
+                  const TextSpan(text: " "),
                   TextSpan(
                     text: AppStrings.privacyPolicy,
                     style: bodyTextStyle.copyWith(
