@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
@@ -24,7 +22,7 @@ class _EditProfileState extends State<EditProfile> {
           child: Padding(
         padding: EdgeInsets.only(
             top: MediaQuery.of(context).size.height / 10, left: 20, right: 20),
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -137,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
                   padding: const EdgeInsets.only(top: 13, right: 20),
                   child: GestureDetector(
                     onTap: () {
-                      _OTPValidationlBottomSheet(context);
+                      _oTPValidationlBottomSheet(context);
                     },
                     child: Text(
                       AppStrings.verify,
@@ -155,7 +153,7 @@ class _EditProfileState extends State<EditProfile> {
                 inputType: TextInputType.name,
                 textColor: AppColor.textColor,
               ),
-              Spacer(),
+              const Spacer(),
               PrimaryBtn(
                 title: AppStrings.updateInfo,
                 onPress: () {},
@@ -171,7 +169,7 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 
-  void _OTPValidationlBottomSheet(context) {
+  void _oTPValidationlBottomSheet(context) {
     showModalBottomSheet(
         context: context,
         shape: const RoundedRectangleBorder(

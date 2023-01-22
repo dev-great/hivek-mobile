@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
@@ -32,7 +29,7 @@ class _ReadFileState extends State<ReadFile> {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,17 +115,17 @@ class _ReadFileState extends State<ReadFile> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.bookmark_border_outlined,
                             color: AppColor.textColor,
                           ),
                           onPressed: () {
-                            final name = AppStrings.bookmarks;
+                            const name = AppStrings.bookmarks;
                             _bookModalBottomSheet(context, name);
                           },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
+                        const Padding(
+                          padding: EdgeInsets.only(
                             top: 8,
                             bottom: 8,
                           ),
@@ -138,12 +135,12 @@ class _ReadFileState extends State<ReadFile> {
                           ),
                         ),
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Iconsax.bookmark_25,
                             color: AppColor.textColor,
                           ),
                           onPressed: () {
-                            final name = AppStrings.saveMaterial;
+                            const name = AppStrings.saveMaterial;
                             _bookModalBottomSheet(context, name);
                           },
                         ),
@@ -178,7 +175,7 @@ class _ReadFileState extends State<ReadFile> {
     );
   }
 
-  final Categories = [
+  final categories = [
     'Chapter 3 ',
     'Literature review',
     'Requirements',
@@ -231,15 +228,15 @@ class _ReadFileState extends State<ReadFile> {
                               fontWeight: FontWeight.w500),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Wrap(
                           children: List.generate(
-                              Categories.length,
+                              categories.length,
                               (index) => GestureDetector(
                                     onTap: () {},
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 70,
                                       width: MediaQuery.of(context).size.width,
                                       child: ListTile(
@@ -257,7 +254,7 @@ class _ReadFileState extends State<ReadFile> {
                                           ),
                                         ),
                                         title: Text(
-                                          Categories[index],
+                                          categories[index],
                                           style: headerTextStyle.copyWith(
                                               fontSize: 14,
                                               color: AppColor.blackColor,
