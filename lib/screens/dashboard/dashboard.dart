@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_image.dart';
@@ -160,7 +157,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 12),
                         child: Row(children: [
-                          Container(
+                          SizedBox(
                             width: MediaQuery.of(context).size.width / 2.3,
                             child: Text(
                               AppStrings.projectA,
@@ -211,7 +208,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Expanded(
                   child: GridView(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, childAspectRatio: 0.9),
