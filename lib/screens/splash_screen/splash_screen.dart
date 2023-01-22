@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_image.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/screens/base.dart';
 import 'package:projectx/screens/welcome_screen/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,9 +23,13 @@ class _SplashScreenState extends State<SplashScreen> {
     _splash();
   }
 
+  LocalStorage storage = LocalStorage('credential');
   _splash() async {
     await Future.delayed(const Duration(milliseconds: 4000), () {
-      Navigator.pushNamed(context, WelcomeScreen.route);
+      if (storage.getItem('credential') == null) {
+        return Navigator.pushNamed(context, WelcomeScreen.route);
+      }
+      return Navigator.pushNamed(context, BaseScreen.route);
     });
   }
 
@@ -40,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 40),
               child: Column(
