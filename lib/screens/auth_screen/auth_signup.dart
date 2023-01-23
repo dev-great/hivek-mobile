@@ -3,7 +3,9 @@ import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/logic/auth/passwordless_view.dart';
 import 'package:projectx/screens/auth_screen/auth_email_validation.dart';
+import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {
   static const String route = '/signup';
@@ -15,8 +17,10 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _isActive = false;
+  String? _email;
   TextEditingController emailController = TextEditingController();
 
+  bool _isLoading = false;
   final _form = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -115,7 +119,7 @@ class _SignUpState extends State<SignUp> {
                 title: AppStrings.continueText,
                 onPress: () {
                   _isActive == true
-                      ? Navigator.pushNamed(context, EmailValidation.route)
+                      ? _loginNew()
                       : () {};
                 },
                 color: _isActive == true
@@ -130,5 +134,48 @@ class _SignUpState extends State<SignUp> {
         )),
       ),
     );
+  }
+
+  void _loginNew() async {
+    var isValid = _form.currentState?.validate();
+    setState(() {
+      _isLoading = true;
+    });
+    if (!isValid!) {
+      return setState(() {
+        _isLoading = false; 
+      });
+    }
+    _form.currentState?.save();
+    bool istoken = await Provider.of<RegistrationView>(
+      context,
+      listen: false,
+    ).passwordless(_email!);
+    if (istoken) {
+      Navigator.pushNamed(context, EmailValidation.route);
+      setState(() {
+        _isLoading = false;
+      });
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text(
+                  "Login credentials are wrong check your username or password and try Again"),
+              actions: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("OK"),
+                )
+              ],
+            );
+          });
+    }
   }
 }

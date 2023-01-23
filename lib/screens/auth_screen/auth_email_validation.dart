@@ -3,7 +3,9 @@ import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/logic/auth/passwordless_view.dart';
 import 'package:projectx/screens/auth_screen/tell_more.dart';
+import 'package:provider/provider.dart';
 
 class EmailValidation extends StatefulWidget {
   static const String route = '/email_validation';
@@ -16,6 +18,8 @@ class EmailValidation extends StatefulWidget {
 class _EmailValidationState extends State<EmailValidation> {
   bool _isActive = false;
   TextEditingController otpController = TextEditingController();
+
+  bool _isLoading = false;
 
   final _form = GlobalKey<FormState>();
   @override
@@ -182,4 +186,47 @@ class _EmailValidationState extends State<EmailValidation> {
       ),
     );
   }
+
+  // void _loginNew() async {
+  //   var isValid = _form.currentState?.validate();
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   if (!isValid!) {
+  //     return setState(() {
+  //       _isLoading = false; // your loader has started to load
+  //     });
+  //   }
+  //   _form.currentState?.save();
+  //   bool istoken = await Provider.of<RegistrationView>(
+  //     context,
+  //     listen: false,
+  //   ).passwordless(email);
+  //   if (istoken) {
+  //     Navigator.pushNamed(context, TellMore.route)
+  //     setState(() {
+  //       _isLoading = false; // your loader has started to load
+  //     });
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false; // your loader has started to load
+  //     });
+  //     showDialog(
+  //         context: context,
+  //         builder: (context) {
+  //           return AlertDialog(
+  //             title: const Text(
+  //                 "Login credentials are wrong check your username or password and try Again"),
+  //             actions: [
+  //               GestureDetector(
+  //                 onTap: () {
+  //                   Navigator.of(context).pop();
+  //                 },
+  //                 child: const Text("OK"),
+  //               )
+  //             ],
+  //           );
+  //         });
+  //   }
+  // }
 }
