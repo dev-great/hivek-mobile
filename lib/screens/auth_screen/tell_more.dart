@@ -1,10 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/logic/profile/profile_view.dart';
 import 'package:projectx/screens/auth_screen/acknowledgement.dart';
 import 'package:projectx/screens/auth_screen/components/schoolsModel.dart';
+import 'package:provider/provider.dart';
 
 class TellMore extends StatefulWidget {
   static const String route = '/tellMore';
@@ -21,6 +27,10 @@ class _TellMoreState extends State<TellMore> {
   String? school;
   String? _result;
   List<String> searchResult = [];
+
+  bool _isLoading = false;
+
+  LocalStorage storage = LocalStorage('usertoken');
 
   @override
   Widget build(BuildContext context) {
@@ -153,26 +163,24 @@ class _TellMoreState extends State<TellMore> {
           const SizedBox(
             height: 20,
           ),
-          PrimaryBtn(
-            title: AppStrings.continueText,
-            onPress: () {
-              school != null && whatYouDo != null
-                  ? Navigator.pushNamed(
-                      context,
-                      Acknowledgement.route,
-                      arguments: {
-                        'isSettings': false,
-                      },
-                    )
-                  : () {};
-            },
-            color: school != null && whatYouDo != null
-                ? AppColor.blackColor
-                : AppColor.greyColor,
-            textColor: school != null && whatYouDo != null
-                ? AppColor.whiteColor
-                : AppColor.textColor.withOpacity(0.3),
-          ),
+          _isLoading == false
+              ? PrimaryBtn(
+                  title: AppStrings.continueText,
+                  onPress: () {
+                    print(
+                        "{credential: ${storage.getItem('credential').toString()}");
+                    school != null && whatYouDo != null
+                        ? _updateProfileOccupation()
+                        : () {};
+                  },
+                  color: school != null && whatYouDo != null
+                      ? AppColor.blackColor
+                      : AppColor.greyColor,
+                  textColor: school != null && whatYouDo != null
+                      ? AppColor.whiteColor
+                      : AppColor.textColor.withOpacity(0.3),
+                )
+              : const CircularProgressIndicator(color: AppColor.primaryColor),
         ]),
       ),
     ));
@@ -387,7 +395,7 @@ class _TellMoreState extends State<TellMore> {
                             decoration: TextDecoration.none,
                           ),
                         ),
-                        value: AppStrings.student,
+                        value: 'student',
                         groupValue: whatYouDo,
                         onChanged: (value) {
                           setState(() {
@@ -406,7 +414,7 @@ class _TellMoreState extends State<TellMore> {
                             decoration: TextDecoration.none,
                           ),
                         ),
-                        value: AppStrings.lecturer,
+                        value: 'lecturer',
                         groupValue: whatYouDo,
                         onChanged: (value) {
                           setState(() {
@@ -417,25 +425,6 @@ class _TellMoreState extends State<TellMore> {
                         selected: false,
                         controlAffinity: ListTileControlAffinity.trailing,
                       ),
-                      RadioListTile(
-                        title: Text(
-                          AppStrings.researcher,
-                          style: bodyTextStyle.copyWith(
-                            color: AppColor.blackColor,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                        value: AppStrings.researcher,
-                        groupValue: whatYouDo,
-                        onChanged: (value) {
-                          setState(() {
-                            _whatYouDoResult(value);
-                          });
-                        },
-                        activeColor: AppColor.greenColor,
-                        selected: false,
-                        controlAffinity: ListTileControlAffinity.trailing,
-                      )
                     ],
                   ),
                   Padding(
@@ -463,5 +452,63 @@ class _TellMoreState extends State<TellMore> {
             );
           });
         });
+  }
+
+  void _updateProfileOccupation() async {
+    print(whatYouDo);
+    setState(() {
+      _isLoading = true;
+    });
+    bool istoken = await Provider.of<UpdateProfileView>(
+      context,
+      listen: false,
+    ).updateProfileOccupation(whatYouDo);
+    if (istoken) {
+      Navigator.pushNamed(
+        context,
+        Acknowledgement.route,
+        arguments: {
+          'isSettings': false,
+        },
+      );
+      setState(() {
+        _isLoading = false; // your loader has started to load
+        storage.deleteItem("token");
+      });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.primaryColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.primaryColor,
+          title: 'Awesome!',
+          message: AppStrings.profileUpdateSucess,
+          contentType: ContentType.success,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    } else {
+      setState(() {
+        _isLoading = false; // your loader has started to load
+      });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.dangerColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.dangerColor,
+          title: 'On Snap!',
+          message: AppStrings.profileUpdateError,
+          contentType: ContentType.failure,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    }
   }
 }

@@ -26,10 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
   LocalStorage storage = LocalStorage('credential');
   _splash() async {
     await Future.delayed(const Duration(milliseconds: 4000), () {
-      if (storage.getItem('credential') == null) {
-        return Navigator.pushNamed(context, WelcomeScreen.route);
+      if (storage.getItem('credential').toString() == null &&
+          storage.getItem('credential').toString().isNotEmpty) {
+        return Navigator.pushNamed(context, BaseScreen.route);
       }
-      return Navigator.pushNamed(context, BaseScreen.route);
+      return Navigator.pushNamed(context, WelcomeScreen.route);
     });
   }
 

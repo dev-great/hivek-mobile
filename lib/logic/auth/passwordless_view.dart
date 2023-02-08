@@ -20,13 +20,14 @@ class RegistrationView with ChangeNotifier {
               }));
       var data = json.decode(response.body) as Map;
       if (data.containsKey("token")) {
-        storage.setItem("token", data['token']);
-        print(storage.getItem('token'));
+        storage.setItem("token", [data['token'], email]);
+        print("${storage.getItem("token")}");
         return true;
       }
-      return true;
+      print("{ Networkerror: $data }");
+      return false;
     } catch (e) {
-      print(e);
+      print("{ error: $e }");
       return false;
     }
   }

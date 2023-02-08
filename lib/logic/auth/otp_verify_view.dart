@@ -24,13 +24,15 @@ class OTPVerifyView with ChangeNotifier {
             "connection_type": "passwordless",
           }));
       var data = json.decode(response.body) as Map;
-      if (data.containsKey("credential")) {
+      if (data.containsKey("token")) {
         storage.setItem("credential", data['token']);
+        print(
+          storage.getItem('credential'),
+        );
         storage.deleteItem("token");
-        print(storage.getItem('credential'));
         return true;
       }
-      return true;
+      return false;
     } catch (e) {
       print(e);
       return false;

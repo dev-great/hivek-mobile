@@ -1,8 +1,11 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
 import 'package:projectx/app/app_decoration.dart';
 import 'package:projectx/app/app_string.dart';
+import 'package:projectx/logic/auth/otp_verify_view.dart';
 import 'package:projectx/logic/auth/passwordless_view.dart';
 import 'package:projectx/screens/auth_screen/tell_more.dart';
 import 'package:provider/provider.dart';
@@ -18,8 +21,10 @@ class EmailValidation extends StatefulWidget {
 class _EmailValidationState extends State<EmailValidation> {
   bool _isActive = false;
   TextEditingController otpController = TextEditingController();
-
+  String? _emailToken;
   bool _isLoading = false;
+
+  LocalStorage storage = LocalStorage('usertoken');
 
   final _form = GlobalKey<FormState>();
   @override
@@ -105,6 +110,7 @@ class _EmailValidationState extends State<EmailValidation> {
                     if (v.length == 6) {
                       setState(() {
                         _isActive = true;
+                        _emailToken = v.toString();
                       });
                     } else {
                       setState(() {
@@ -123,20 +129,22 @@ class _EmailValidationState extends State<EmailValidation> {
               const SizedBox(
                 height: 20,
               ),
-              PrimaryBtn(
-                title: AppStrings.verifyEmail,
-                onPress: () {
-                  _isActive == true
-                      ? Navigator.pushNamed(context, TellMore.route)
-                      : () {};
-                },
-                color: _isActive == true
-                    ? AppColor.blackColor
-                    : AppColor.greyColor,
-                textColor: _isActive == true
-                    ? AppColor.whiteColor
-                    : AppColor.textColor.withOpacity(0.3),
-              ),
+              _isLoading == false
+                  ? PrimaryBtn(
+                      title: AppStrings.verifyEmail,
+                      onPress: () {
+                        print(_emailToken);
+                        _isActive == true ? _emailTokenValication() : () {};
+                      },
+                      color: _isActive == true
+                          ? AppColor.blackColor
+                          : AppColor.greyColor,
+                      textColor: _isActive == true
+                          ? AppColor.whiteColor
+                          : AppColor.textColor.withOpacity(0.3),
+                    )
+                  : const CircularProgressIndicator(
+                      color: AppColor.primaryColor),
               const SizedBox(
                 height: 25,
               ),
@@ -187,46 +195,65 @@ class _EmailValidationState extends State<EmailValidation> {
     );
   }
 
-  // void _loginNew() async {
-  //   var isValid = _form.currentState?.validate();
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   if (!isValid!) {
-  //     return setState(() {
-  //       _isLoading = false; // your loader has started to load
-  //     });
-  //   }
-  //   _form.currentState?.save();
-  //   bool istoken = await Provider.of<RegistrationView>(
-  //     context,
-  //     listen: false,
-  //   ).passwordless(email);
-  //   if (istoken) {
-  //     Navigator.pushNamed(context, TellMore.route)
-  //     setState(() {
-  //       _isLoading = false; // your loader has started to load
-  //     });
-  //   } else {
-  //     setState(() {
-  //       _isLoading = false; // your loader has started to load
-  //     });
-  //     showDialog(
-  //         context: context,
-  //         builder: (context) {
-  //           return AlertDialog(
-  //             title: const Text(
-  //                 "Login credentials are wrong check your username or password and try Again"),
-  //             actions: [
-  //               GestureDetector(
-  //                 onTap: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //                 child: const Text("OK"),
-  //               )
-  //             ],
-  //           );
-  //         });
-  //   }
-  // }
+  void _emailTokenValication() async {
+    var isValid = _form.currentState?.validate();
+    setState(() {
+      _isLoading = true;
+    });
+    if (!isValid!) {
+      return setState(() {
+        _isLoading = false; // your loader has started to load
+      });
+    }
+    _form.currentState?.save();
+    bool istoken = await Provider.of<OTPVerifyView>(
+      context,
+      listen: false,
+    ).otpVerify(
+      storage.getItem("token")[1],
+      storage.getItem("token")[0],
+      _emailToken!,
+    );
+    if (istoken) {
+      Navigator.pushNamed(context, TellMore.route);
+      setState(() {
+        _isLoading = false; // your loader has started to load
+        storage.deleteItem("token");
+      });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.primaryColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.primaryColor,
+          title: 'Awesome!',
+          message: AppStrings.emailVerificationSucess,
+          contentType: ContentType.success,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    } else {
+      setState(() {
+        _isLoading = false; // your loader has started to load
+      });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.dangerColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.dangerColor,
+          title: 'On Snap!',
+          message: AppStrings.emailVerificationError,
+          contentType: ContentType.failure,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    }
+  }
 }

@@ -3,6 +3,7 @@ import 'package:projectx/app/app_string.dart';
 import 'package:projectx/logic/auth/otp_verify_view.dart';
 import 'package:projectx/logic/auth/passwordless_view.dart';
 import 'package:projectx/logic/auth/sso_googlr_view.dart';
+import 'package:projectx/logic/profile/profile_view.dart';
 import 'package:projectx/routes/route.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => RegistrationView()),
         ChangeNotifierProvider(create: (ctx) => SSOGoogleView()),
         ChangeNotifierProvider(create: (ctx) => OTPVerifyView()),
+        ChangeNotifierProvider(create: (ctx) => UpdateProfileView()),
+        ChangeNotifierProvider<PostDataProvider>(
+            create: (_) => PostDataProvider()),
       ],
       child: MaterialApp(
         title: AppStrings.appName,

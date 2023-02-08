@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:projectx/app/app_button.dart';
 import 'package:projectx/app/app_color.dart';
@@ -97,6 +98,7 @@ class _SignUpState extends State<SignUp> {
                     if (v.contains('.com')) {
                       setState(() {
                         _isActive = true;
+                        _email = v.toString();
                       });
                     } else {
                       setState(() {
@@ -115,20 +117,21 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 25,
               ),
-              PrimaryBtn(
-                title: AppStrings.continueText,
-                onPress: () {
-                  _isActive == true
-                      ? _loginNew()
-                      : () {};
-                },
-                color: _isActive == true
-                    ? AppColor.blackColor
-                    : AppColor.greyColor,
-                textColor: _isActive == true
-                    ? AppColor.whiteColor
-                    : AppColor.textColor.withOpacity(0.3),
-              )
+              _isLoading == false
+                  ? PrimaryBtn(
+                      title: AppStrings.continueText,
+                      onPress: () {
+                        _isActive == true ? _loginNew() : () {};
+                      },
+                      color: _isActive == true
+                          ? AppColor.blackColor
+                          : AppColor.greyColor,
+                      textColor: _isActive == true
+                          ? AppColor.whiteColor
+                          : AppColor.textColor.withOpacity(0.3),
+                    )
+                  : const CircularProgressIndicator(
+                      color: AppColor.primaryColor)
             ],
           ),
         )),
@@ -143,39 +146,56 @@ class _SignUpState extends State<SignUp> {
     });
     if (!isValid!) {
       return setState(() {
-        _isLoading = false; 
+        _isLoading = false;
       });
     }
     _form.currentState?.save();
+    print(_email);
     bool istoken = await Provider.of<RegistrationView>(
       context,
       listen: false,
     ).passwordless(_email!);
+    print(istoken);
+
     if (istoken) {
       Navigator.pushNamed(context, EmailValidation.route);
       setState(() {
         _isLoading = false;
       });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.primaryColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.primaryColor,
+          title: 'Awesome!',
+          message: AppStrings.passwordlessSucess,
+          contentType: ContentType.success,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     } else {
       setState(() {
-        _isLoading = false;
+        _isLoading = false; // your loader has started to load
       });
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text(
-                  "Login credentials are wrong check your username or password and try Again"),
-              actions: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text("OK"),
-                )
-              ],
-            );
-          });
+      final snackBar = SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.dangerColor,
+        content: AwesomeSnackbarContent(
+          color: AppColor.dangerColor,
+          title: 'On Snap!',
+          message: AppStrings.passwordlessError,
+          contentType: ContentType.failure,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     }
   }
 }

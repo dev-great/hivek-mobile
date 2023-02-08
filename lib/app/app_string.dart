@@ -144,4 +144,21 @@ class AppStrings {
   static const String applyFilter = 'Apply Filter';
   static const String next = 'Next';
   static const String previous = 'Previous';
+
+  static const String passwordlessError =
+      "Email credential is wrong check your email or network connection and retry";
+
+  static const String passwordlessSucess =
+      "Congratulations, your email has been saved sucessfully, now verify your email.";
+
+  static const String emailVerificationError =
+      "Email verification failed, confirm your token or network connection and retry";
+
+  static const String emailVerificationSucess =
+      "Congratulations, your email has been verified sucessfully.";
+
+  static const String profileUpdateSucess = "Profile Updated Sucessfully.";
+
+  static const String profileUpdateError =
+      "Error! profile failed to update, check your network connection and try again.";
 }
