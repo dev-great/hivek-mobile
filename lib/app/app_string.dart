@@ -143,6 +143,7 @@ class AppStrings {
   static const String department = 'Department';
   static const String applyFilter = 'Apply Filter';
   static const String next = 'Next';
+  static const String demo = 'demo';
   static const String previous = 'Previous';
 
   static const String passwordlessError =

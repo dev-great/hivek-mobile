@@ -9,5 +9,8 @@ class AppImages {
   static const empty = 'assets/images/no-bookmarks.png';
   static const great = 'assets/images/Great.png';
   static const abdull = 'assets/images/Abdull.png';
+  static const guma = 'assets/images/guma.jpg';
+  static const joe = 'assets/images/joe.png';
+  static const enesi = 'assets/images/enesi.png';
   static const avater = 'assets/images/avatar.png';
 }

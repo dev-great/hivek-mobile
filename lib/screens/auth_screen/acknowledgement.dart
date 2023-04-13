@@ -97,6 +97,7 @@ class _AcknowledgementState extends State<Acknowledgement> {
                               child: CircleAvatar(
                                 radius: 36,
                                 backgroundColor: AppColor.whiteColor,
+                                backgroundImage: AssetImage(AppImages.guma),
                               ),
                             ),
                             Padding(
@@ -161,9 +162,9 @@ class _AcknowledgementState extends State<Acknowledgement> {
                               radius: 38,
                               backgroundColor: AppColor.blackColor,
                               child: CircleAvatar(
-                                radius: 36,
-                                backgroundColor: AppColor.whiteColor,
-                              ),
+                                  radius: 36,
+                                  backgroundColor: AppColor.whiteColor,
+                                  backgroundImage: AssetImage(AppImages.joe)),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(5.0),
@@ -222,9 +223,9 @@ class _AcknowledgementState extends State<Acknowledgement> {
                               radius: 38,
                               backgroundColor: AppColor.blackColor,
                               child: CircleAvatar(
-                                radius: 36,
-                                backgroundColor: AppColor.whiteColor,
-                              ),
+                                  radius: 36,
+                                  backgroundColor: AppColor.whiteColor,
+                                  backgroundImage: AssetImage(AppImages.enesi)),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(5.0),
@@ -254,7 +255,7 @@ class _AcknowledgementState extends State<Acknowledgement> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                AppStrings.eFAminu,
+                                AppStrings.demo,
                                 style: bodyTextStyle.copyWith(
                                   color: AppColor.blackColor,
                                   decoration: TextDecoration.none,
